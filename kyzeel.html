@@ -1,265 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<title>Kyzeel | Premium Fashion</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KYZEEL - Premium Clothing</title>
-
-<!-- Razorpay -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#0f0f0f;
-color:white;
-}
-
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:#111;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.logo{
-font-size:24px;
-font-weight:600;
-letter-spacing:3px;
-color:#d4af37;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-size:15px;
-}
-
-nav a:hover{
-color:#d4af37;
-}
-
-/* HERO */
-.hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:linear-gradient(to right,#000,#1a1a1a);
-}
-
-.hero h1{
-font-size:55px;
-letter-spacing:4px;
-color:#d4af37;
-}
-
-.hero p{
-margin:20px 0;
-font-size:18px;
-color:#ccc;
-}
-
-/* PRODUCTS */
-.products{
-padding:80px 8%;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:#1a1a1a;
-padding:20px;
-border-radius:12px;
-text-align:center;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 10px 25px rgba(212,175,55,0.3);
-}
-
-.card img{
-width:100%;
-border-radius:8px;
-}
-
-.price{
-margin:15px 0;
-color:#d4af37;
-font-weight:600;
-font-size:18px;
-}
-
-button{
-padding:10px 20px;
-background:#d4af37;
-border:none;
-color:black;
-cursor:pointer;
-border-radius:5px;
-font-weight:600;
-}
-
-button:hover{
-opacity:0.9;
-}
-
-/* LOGIN MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:#222;
-padding:30px;
-width:300px;
-border-radius:10px;
-text-align:center;
-}
-
-.modal input{
-width:100%;
-padding:10px;
-margin:10px 0;
-border:none;
-border-radius:5px;
-}
-
-.close-btn{
-background:#444;
-color:white;
-margin-top:10px;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-background:#111;
-margin-top:50px;
-color:#888;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.hero h1{
-font-size:35px;
-}
-}
-
+body, html {margin:0; padding:0; font-family:'Poppins',sans-serif; background:#111; color:white;}
+*{box-sizing:border-box;}
+header{background:#000; color:white; padding:15px 8%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000;}
+header h2{margin:0; font-size:28px; font-weight:700;}
+header nav a{color:white; text-decoration:none; margin-left:20px; font-weight:bold; transition:0.3s; cursor:pointer;}
+header nav a:hover{color:#FFD700;}
+#userDisplay{margin-left:20px; font-weight:bold; cursor:pointer;}
+#logoutBtn{display:none;}
+section{padding:40px 8%;}
+section h1,h2{margin-bottom:20px;}
+section h1{font-size:36px;}
+section h2{font-size:28px;}
+.hero{position:relative; background:url('file:///C:/Users/BHAGAWANARAM/Downloads/ChatGPT%20Image%20Feb%2027,%202026,%2009_20_57%20PM.png') center/cover no-repeat; height:400px; border-radius:12px; margin-bottom:40px; display:flex; justify-content:center; align-items:center;}
+.hero h1{font-size:48px; background:rgba(0,0,0,0.6); padding:15px 25px; border-radius:12px;}
+.featured-products, .products{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px;}
+.category-buttons{margin-bottom:30px;}
+.category-buttons button{margin-right:10px; margin-bottom:20px; padding:12px 18px; cursor:pointer; border:none; background:linear-gradient(45deg,#FF6347,#FFD700); color:black; border-radius:6px; font-weight:bold; transition:0.3s;}
+.category-buttons button:hover{background:linear-gradient(45deg,#FFD700,#FF6347); color:white;}
+.card{border-radius:12px; box-shadow:0 8px 20px rgba(255,215,0,0.3); text-align:center; background:#222; padding:15px; transition: transform 0.3s;}
+.card:hover {transform: scale(1.05);}
+.card img {width:100%; height:280px; object-fit:cover; border-radius:8px;}
+h3{margin:10px 0 5px 0;}
+p{margin:0 0 10px 0;}
+button.add-to-cart{background:linear-gradient(45deg,#FF6347,#FFD700); color:black; border:none; padding:10px 15px; margin-top:10px; cursor:pointer; border-radius:6px; font-weight:bold; transition:0.3s;}
+button.add-to-cart:hover{background:linear-gradient(45deg,#FFD700,#FF6347); color:white;}
+#cart{background:#222; padding:25px; border-radius:12px; margin-top:40px; box-shadow:0 8px 20px rgba(255,215,0,0.3);}
+#cart ul{list-style:none; margin-top:15px; padding-left:0;}
+#cart li{margin-bottom:10px;}
+button.remove{background:red; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;}
+.contact{text-align:center; padding:50px 8%;}
+.contact a{color:#FFD700; text-decoration:none; margin:0 12px; font-weight:bold;}
+.contact a img{width:28px; vertical-align:middle; margin-right:5px;}
+#searchBar{margin-bottom:30px; text-align:center;}
+#searchInput{padding:12px 15px; width:60%; max-width:400px; border-radius:8px; border:none; font-size:16px;}
+form input{padding:10px; margin-bottom:10px; width:100%; border-radius:6px; border:none; font-size:16px;}
+form button{padding:10px 15px; border:none; border-radius:6px; background:linear-gradient(45deg,#FF6347,#FFD700); color:black; font-weight:bold; cursor:pointer;}
+form button:hover{background:linear-gradient(45deg,#FFD700,#FF6347); color:white;}
+#profileSection{background:#222; padding:20px; border-radius:12px; margin-top:30px;}
+#profileSection h3{margin-bottom:15px;}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">KYZEEL</div>
+<h2>Kyzeel</h2>
 <nav>
-<a href="#">Home</a>
-<a href="#">Shop</a>
-<a href="#" onclick="openLogin()">Login</a>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#cart">Cart</a>
+<a id="loginLink">Signup/Login</a>
+<button id="logoutBtn">Logout</button>
+<a href="#contact">Contact</a>
+<span id="userDisplay"></span>
 </nav>
 </header>
 
-<section class="hero">
-<h1>LUXURY STREETWEAR</h1>
-<p>Redefining Modern Fashion</p>
+<section id="home">
+<div class="hero">
+</div>
+<h2>Featured Products</h2>
+<div class="featured-products" id="featured-products-container"></div>
 </section>
 
-<section class="products">
-
-<div class="card">
-<img src="https://via.placeholder.com/300x350" alt="Hoodie">
-<h3>Black Premium Hoodie</h3>
-<div class="price">₹1999</div>
-<button onclick="payNow(1999)">Buy Now</button>
+<section id="products">
+<h1>All Products</h1>
+<div id="searchBar">
+<input type="text" id="searchInput" placeholder="Search Products..." onkeyup="searchProducts()">
 </div>
-
-<div class="card">
-<img src="https://via.placeholder.com/300x350" alt="Tshirt">
-<h3>Gold Edition T-Shirt</h3>
-<div class="price">₹1299</div>
-<button onclick="payNow(1299)">Buy Now</button>
+<div class="category-buttons">
+<button onclick="filterCategory('All')">All</button>
+<button onclick="filterCategory('Men')">Men</button>
+<button onclick="filterCategory('Women')">Women</button>
+<button onclick="filterCategory('Bags')">Bags</button>
+<button onclick="filterCategory('Accessories')">Accessories</button>
 </div>
-
-<div class="card">
-<img src="https://via.placeholder.com/300x350" alt="Jacket">
-<h3>Luxury Oversized Jacket</h3>
-<div class="price">₹3499</div>
-<button onclick="payNow(3499)">Buy Now</button>
-</div>
-
+<div class="products" id="products-container"></div>
 </section>
 
-<!-- LOGIN MODAL -->
-<div class="modal" id="loginModal">
-<div class="modal-content">
+<section id="cart">
+<h2>Shopping Cart</h2>
+<ul id="cartItems"></ul>
+<h3>Total: ₹<span id="total">0</span></h3>
+</section>
+
+<section id="userForms" style="display:none;">
+<div id="signupForm">
+<h2>Sign Up</h2>
+<form onsubmit="signup(event)">
+<input type="text" id="firstName" placeholder="First Name" required>
+<input type="text" id="lastName" placeholder="Last Name" required>
+<input type="text" id="signupUsername" placeholder="Username" required>
+<input type="password" id="signupPassword" placeholder="Password" required>
+<input type="text" id="signupMobile" placeholder="Mobile Number" required>
+<input type="email" id="signupEmail" placeholder="Email" required>
+<button type="submit">Sign Up</button>
+<p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+</form>
+</div>
+
+<div id="loginForm" style="display:none;">
 <h2>Login</h2>
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
-<button>Login</button>
-<button class="close-btn" onclick="closeLogin()">Close</button>
+<form onsubmit="login(event)">
+<input type="text" id="loginUsername" placeholder="Username" required>
+<input type="password" id="loginPassword" placeholder="Password" required>
+<button type="submit">Login</button>
+<p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up here</a></p>
+</form>
 </div>
-</div>
+</section>
 
-<footer>
-© 2026 KYZEEL. All Rights Reserved.
-</footer>
+<section id="profileSection" style="display:none;">
+<h3>User Profile</h3>
+<p id="profileName"></p>
+<p id="profileEmail"></p>
+<p id="profileMobile"></p>
+</section>
+
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p>📞 9983408725</p>
+<p>Follow Us:</p>
+<a href="https://wa.me/919983408725" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">WhatsApp</a>
+<a href="https://www.instagram.com/its_shyam_sunder/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">Instagram</a>
+<a href="https://www.youtube.com/@Laxmanytp" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">YouTube</a>
+<a href="https://www.linkedin.com/in/shyam-sunder-b54b08336/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">LinkedIn</a>
+<a href="https://www.facebook.com/profile.php?id=100076386704145" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">Facebook</a>
+</section>
 
 <script>
+// ===== PRODUCTS =====
+let productsData = [
+{name:"Casual White Shirt", price:399, category:"Men", img:"https://i.pinimg.com/1200x/51/df/00/51df00666e30dfc62bb4f1998e9aae83.jpg"},
+{name:"Denim Jacket", price:2199, category:"Men", img:"https://i.pinimg.com/736x/f2/01/50/f2015009f08fc7b15f157ec4c662616c.jpg"},
+{name:"Black Cargo Pants", price:299, category:"Men", img:"https://i.pinimg.com/736x/70/32/7f/70327f63d16d256ef83f76a7f02375fc.jpg"},
+{name:"Grey Hoodie", price:1499, category:"Men", img:"https://i.pinimg.com/736x/cd/34/6a/cd346a625bf241c74f6f71b34d033f5a.jpg"},
+{name:"Elegant Red Dress", price:1399, category:"Women", img:"https://i.pinimg.com/736x/f4/3f/a9/f43fa9efd218172e2d9a5f037fa573f2.jpg"},
+{name:"Floral Summer Dress", price:1299, category:"Women", img:"https://raejeans.com/cdn/shop/products/Chic-Blue-Peter-Pan-Collar-Print-Button-Sashes-Denim-Long-Dress-Short-Sleeve1.jpg?v=1698814447"},
+{name:"Chic White Blouse", price:599, category:"Women", img:"https://i.pinimg.com/736x/4f/35/58/4f3558ead355f716fb5f236f8bbe8df3.jpg"},
+{name:"Denim Skirt", price:599, category:"Women", img:"https://i.pinimg.com/736x/8a/08/5e/8a085e5badcfa8a119931c955309fd4b.jpg"},
+{name:"Leather Handbag", price:349, category:"Bags", img:"https://i.pinimg.com/736x/cd/7a/e3/cd7ae387f710d5036b09b6ad403fe4be.jpg"},
+{name:"Stylish Backpack", price:449, category:"Bags", img:"https://i.pinimg.com/736x/50/dd/e6/50dde6c2b0996740f271630e54ae5e90.jpg"},
+{name:"Elegant Tote Bag", price:399, category:"Bags", img:"https://i.pinimg.com/736x/33/d7/ea/33d7ea0446171a2862965ef0d859d4ca.jpg"},
+{name:"Classic Messenger Bag", price:999, category:"Bags", img:"https://i.pinimg.com/1200x/10/57/4a/10574ae467b84719172081e60ca81d5d.jpg"},
+{name:"Luxury Watch", price:5999, category:"Accessories", img:"https://i.pinimg.com/736x/88/dc/1c/88dc1c3ab7fc882fd7d6e18fedb1efac.jpg"},
+{name:"Designer Sunglasses", price:299, category:"Accessories", img:"https://i.pinimg.com/736x/72/47/43/724743cca20f12a35c11769522a4367f.jpg"},
+{name:"Elegant Bracelet", price:759, category:"Accessories", img:"https://i.pinimg.com/736x/38/83/7b/38837b9bfb461a1c5500662cc3726c1d.jpg"},
+{name:"Leather Belt", price:349, category:"Accessories", img:"https://i.pinimg.com/1200x/f9/8a/ae/f98aaec4fe7f6b17d3692628005d541c.jpg"},
+{name:"Casual Polo Shirt", price:1499, category:"Men", img:"https://i.pinimg.com/1200x/36/9f/4b/369f4bf06386dec6688f1aa0a96fc1ee.jpg"}
+];
 
-function openLogin(){
-document.getElementById('loginModal').style.display='flex';
+function displayProducts(products, containerId){
+const container=document.getElementById(containerId);
+container.innerHTML="";
+products.forEach(p=>{
+let div=document.createElement("div");
+div.className="card";
+div.innerHTML=`<img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><p>₹${p.price}</p><button class="add-to-cart" onclick='addToCart("${p.name}",${p.price})'>Add to Cart</button>`;
+container.appendChild(div);
+});
+}
+displayProducts(productsData,"products-container");
+displayProducts(productsData.slice(0,4),"featured-products-container");
+
+function filterCategory(cat){
+if(cat==="All"){displayProducts(productsData,"products-container");}
+else{displayProducts(productsData.filter(p=>p.category===cat),"products-container");}
+}
+function searchProducts(){
+let query=document.getElementById("searchInput").value.toLowerCase();
+displayProducts(productsData.filter(p=>p.name.toLowerCase().includes(query)),"products-container");
 }
 
-function closeLogin(){
-document.getElementById('loginModal').style.display='none';
+// ===== CART =====
+let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(name, price){cartItems.push({name, price}); saveCart(); updateCart();}
+function removeFromCart(index){cartItems.splice(index,1); saveCart(); updateCart();}
+function updateCart(){const cart=document.getElementById("cartItems"); cart.innerHTML=""; let sum=0; cartItems.forEach((item,i)=>{sum+=item.price; let li=document.createElement("li"); li.innerHTML=`${item.name} - ₹${item.price} <button class="remove" onclick="removeFromCart(${i})">Remove</button>`; cart.appendChild(li);}); document.getElementById("total").innerText=sum;}
+function saveCart(){ if(currentUser){ localStorage.setItem("cart_"+currentUser, JSON.stringify(cartItems));} else {localStorage.setItem("cart", JSON.stringify(cartItems));} }
+updateCart();
+
+// ===== SIGNUP & LOGIN =====
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let currentUser = localStorage.getItem("currentUser") || null;
+
+function showSignup(){document.getElementById("signupForm").style.display="block"; document.getElementById("loginForm").style.display="none";}
+function showLogin(){document.getElementById("signupForm").style.display="none"; document.getElementById("loginForm").style.display="block";}
+function signup(event){
+event.preventDefault();
+let fname=document.getElementById("firstName").value.trim();
+let lname=document.getElementById("lastName").value.trim();
+let uname=document.getElementById("signupUsername").value.trim();
+let pwd=document.getElementById("signupPassword").value.trim();
+let mobile=document.getElementById("signupMobile").value.trim();
+let email=document.getElementById("signupEmail").value.trim();
+if(users.some(u=>u.username===uname)){alert("Username already exists!"); return;}
+let user={fname,lname,username:uname,password:pwd,mobile,email};
+users.push(user); localStorage.setItem("users",JSON.stringify(users));
+alert("Signup successful! Please login."); showLogin();
+}
+function login(event){
+event.preventDefault();
+let uname=document.getElementById("loginUsername").value.trim();
+let pwd=document.getElementById("loginPassword").value.trim();
+let user = users.find(u=>u.username===uname && u.password===pwd);
+if(!user){alert("Invalid username or password!"); return;}
+currentUser = uname; localStorage.setItem("currentUser",currentUser); alert("Login successful!");
+document.getElementById("userForms").style.display="none"; document.getElementById("logoutBtn").style.display="inline-block";
+document.getElementById("userDisplay").innerText = user.fname+" "+user.lname;
+// Load user cart
+cartItems = JSON.parse(localStorage.getItem("cart_"+currentUser)) || [];
+updateCart();
+// Show profile
+document.getElementById("profileSection").style.display="block";
+document.getElementById("profileName").innerText = "Name: "+user.fname+" "+user.lname;
+document.getElementById("profileEmail").innerText = "Email: "+user.email;
+document.getElementById("profileMobile").innerText = "Mobile: "+user.mobile;
 }
 
-function payNow(amount){
-var options = {
-"key": "YOUR_RAZORPAY_KEY_ID",
-"amount": amount * 100,
-"currency": "INR",
-"name": "KYZEEL",
-"description": "Clothing Purchase",
-"handler": function (response){
-alert("Payment Successful!");
-}
-};
-var rzp1 = new Razorpay(options);
-rzp1.open();
+// ===== LOGOUT =====
+document.getElementById("logoutBtn").onclick = function(){
+localStorage.removeItem("currentUser"); currentUser=null; cartItems=[]; saveCart(); updateCart();
+document.getElementById("logoutBtn").style.display="none"; document.getElementById("userDisplay").innerText="";
+document.getElementById("userForms").style.display="block"; document.getElementById("profileSection").style.display="none";
+showSignup();
 }
 
+// ===== INIT =====
+document.getElementById("loginLink").onclick = function(){
+document.getElementById("userForms").style.display="block"; showSignup();
+}
+if(currentUser){
+let user = users.find(u=>u.username===currentUser);
+if(user){
+document.getElementById("userForms").style.display="none"; document.getElementById("logoutBtn").style.display="inline-block";
+document.getElementById("userDisplay").innerText = user.fname+" "+user.lname;
+cartItems = JSON.parse(localStorage.getItem("cart_"+currentUser)) || [];
+updateCart();
+document.getElementById("profileSection").style.display="block";
+document.getElementById("profileName").innerText = "Name: "+user.fname+" "+user.lname;
+document.getElementById("profileEmail").innerText = "Email: "+user.email;
+document.getElementById("profileMobile").innerText = "Mobile: "+user.mobile;
+}
+}
 </script>
-
 </body>
 </html>
