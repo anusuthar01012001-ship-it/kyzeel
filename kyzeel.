@@ -16,7 +16,7 @@ section{padding:40px 8%;}
 section h1,h2{margin-bottom:20px;}
 section h1{font-size:36px;}
 section h2{font-size:28px;}
-.hero{position:relative; background:url('file:///C:/Users/BHAGAWANARAM/Downloads/ChatGPT%20Image%20Feb%2027,%202026,%2009_20_57%20PM.png') center/cover no-repeat; height:400px; border-radius:12px; margin-bottom:40px; display:flex; justify-content:center; align-items:center;}
+.hero{position:relative; background:url('https://in.pinterest.com/pin/1117103882591447088') center/cover no-repeat; height:400px; border-radius:12px; margin-bottom:40px; display:flex; justify-content:center; align-items:center;}
 .hero h1{font-size:48px; background:rgba(0,0,0,0.6); padding:15px 25px; border-radius:12px;}
 .featured-products, .products{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px;}
 .category-buttons{margin-bottom:30px;}
